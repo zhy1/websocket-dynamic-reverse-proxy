@@ -1,5 +1,5 @@
 // Package websocketproxy is a reverse proxy for WebSocket connections.
-package proxy
+package custom
 
 import (
 	"fmt"
@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"websocket-dynamic-reverse-proxy/custom"
-
 	"github.com/gorilla/websocket"
 )
 
@@ -66,7 +64,7 @@ func NewProxy( /*target *url.URL*/) *WebsocketProxy {
 	//	u.RawQuery = r.URL.RawQuery
 	//	return &u
 	//}
-	go custom.BootstrapHTTP()
+	go BootstrapHTTP()
 	return &WebsocketProxy{}
 }
 

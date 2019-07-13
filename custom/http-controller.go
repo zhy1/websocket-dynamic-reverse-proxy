@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"websocket-dynamic-reverse-proxy/proxy"
+	//"websocket-dynamic-reverse-proxy/proxy"
 )
 
 type ProxyConfigObject struct {
@@ -31,15 +31,15 @@ func AddProxy(context *gin.Context) {
 	if err != nil {
 		context.JSON(400, map[string]interface{}{
 			"success":        false,
-			"ProxyConfigMap": proxy.ProxyConfigMap,
+			"ProxyConfigMap": ProxyConfigMap,
 			"err":            err.Error(),
 		})
 		return
 	}
-	proxy.ProxyConfigMap[proxyConfig.ListenerPath] = proxyConfig.UpstreamUrl
+	ProxyConfigMap[proxyConfig.ListenerPath] = proxyConfig.UpstreamUrl
 	context.JSON(200, map[string]interface{}{
 		"success":        true,
-		"ProxyConfigMap": proxy.ProxyConfigMap,
+		"ProxyConfigMap": ProxyConfigMap,
 	})
 	return
 }
@@ -53,7 +53,7 @@ func AddProxy(context *gin.Context) {
 func HealthCheckOrigin(context *gin.Context) {
 	context.JSON(200, map[string]interface{}{
 		"success":        true,
-		"ProxyConfigMap": proxy.ProxyConfigMap,
+		"ProxyConfigMap": ProxyConfigMap,
 	})
 	return
 }
