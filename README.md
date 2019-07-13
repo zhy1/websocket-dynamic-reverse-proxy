@@ -17,7 +17,7 @@ request({
     uri: "http://127.0.0.1:6161/add",
     method: "POST",
     body: {
-        listenerPath:"/GS-AS-0001-0002-0003-0006",
+        listenerPath:"/some-listener-addr",
         upstream:"ws://127.0.0.1:3333/"
     }
 })
